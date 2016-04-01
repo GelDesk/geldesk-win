@@ -1,0 +1,13 @@
+## Folders ############################
+
+## Files ###############################
+
+## - Metadata
+*.DS_Store
+[Tt]humbs.db
+
+## - Subversion
+.svn
+
+## - Office (Temp Files)
+~$*

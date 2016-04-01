@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Method to handle an RPC data packet originating from a channel.">
+    <Position X="0.514" Y="1.005" Height="0.666" Width="2.147" />
+  </Comment>
+  <Comment CommentText="Method to handle an RPC message.">
+    <Position X="0.514" Y="2.505" Height="0.563" Width="2.136" />
+  </Comment>
+  <Comment CommentText="Interface to an object which reads RPC data packets from a remote caller and writes RPC data packets to a remote caller.">
+    <Position X="0.514" Y="5.255" Height="0.864" Width="2.136" />
+  </Comment>
+  <Comment CommentText="Interface to an object that handles RPC messages.">
+    <Position X="0.505" Y="3.756" Height="0.501" Width="2.136" />
+  </Comment>
+  <Comment CommentText="Diagnostics &amp; Utilities Classes">
+    <Position X="0.505" Y="7.257" Height="0.291" Width="3.826" />
+  </Comment>
+  <Comment CommentText="An IRpcChannel object is constructed and given to an RpcConnection. The channel then reads and writes data packet strings for its connection when it is open.                              .                                                        An RPC channel can be any type of IPC channel such as STDIO, Domain Sockets, Named Pipes, TCP, etc.">
+    <Position X="4.76" Y="0.969" Height="2.088" Width="2.001" />
+  </Comment>
+  <Comment CommentText="The RpcConnection object creates an RpcMessage object from each JSON data packet received from its channel.            .                                                         Then it puts that message into a new RpcContext and hands THAT to the primary RpcRouter, which implements IHandleRpc.">
+    <Position X="7.012" Y="0.98" Height="2.057" Width="2.011" />
+  </Comment>
+  <Comment CommentText="RpcMessage has 3 basic main data elements: Path, Arguments and RequestId. All other properties are informational only since they are derived from the main 3 elements and they are not serialized.">
+    <Position X="9.257" Y="0.977" Height="2.057" Width="2.011" />
+  </Comment>
+  <Comment CommentText="RpcContext contains an incoming message, information about the message and any objects that might be needed to fulfill the remote call represented by the message. If the message is a request, the RpcContext can be used to respond to that request.">
+    <Position X="11.509" Y="0.978" Height="2.057" Width="2.001" />
+  </Comment>
+  <Comment CommentText="The primary RpcRouter object is a singleton object shared by all connections. It manages a set of sub-routers which all implement IHandleRpc, similar to RpcRouter itself. When a incoming RPC call arrives, it passes the RpcContext to each one of its handlers in order, until one of them returns true (handled/handling).">
+    <Position X="13.75" Y="1" Height="2.036" Width="1.98" />
+  </Comment>
+  <Class Name="GelDesk.RpcErrorCodes">
+    <Position X="2.5" Y="10" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAgAgAgAAAAAIAgAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GelDesk.RpcException">
+    <Position X="2.5" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAgAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GelDesk.RpcPath">
+    <Position X="0.5" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GelDesk.RpcSerializerConfig">
+    <Position X="0.5" Y="7.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GelDesk.RpcConnection">
+    <Position X="7" Y="3.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="GelDesk.RpcConnection.States">
+        <TypeIdentifier>
+          <NewMemberFileName>RpcConnection.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AEAAQAEAAAAAMAgAAAAACIAABAgAgABABQAAAADEAAA=</HashCode>
+      <FileName>RpcConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GelDesk.RpcContext">
+    <Position X="11.5" Y="3.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>CAAgAAAAAAAAAAFAAgAAAAAIBAAAAAAAEAAEIABAJCA=</HashCode>
+      <FileName>RpcContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GelDesk.RpcMessage">
+    <Position X="9.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIABAAAAAAAAAQcAAQAAAAAAACAAAAAIIAAAAEAAAAA=</HashCode>
+      <FileName>RpcMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GelDesk.RpcRouter">
+    <Position X="13.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAQAAAAEAAAAAAAAAAAAAAABAAAAgAAA=</HashCode>
+      <FileName>RpcRouter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GelDesk.RpcStdioChannel">
+    <Position X="4.75" Y="3.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAIIAAAgEAAAAQkBJAAAAAAAIAAAgGAAAA=</HashCode>
+      <FileName>RpcStdioChannel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="GelDesk.IRpcChannel">
+    <Position X="2.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAGAAAA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GelDesk.IHandleRpc">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Delegate Name="GelDesk.RpcDataHandler">
+    <Position X="2.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="GelDesk.RpcHandler">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rpc.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
